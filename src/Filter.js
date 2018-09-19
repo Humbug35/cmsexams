@@ -28,9 +28,9 @@ class Filter extends Component {
             <input type="radio" className="sortAndFilter" value="?_sort=Price:asc" name="price" />Pris, Stigande
             <input type="radio" className="sortAndFilter" value="?_sort=Price:desc" name="price" />Pris, Fallande
             <input type="checkbox" className="sortAndFilter" value="?StockQuantity_gt=0" id="test"/> Finns i lager
-            <input type="checkbox" className="sortAndFilter" value="?Category=Vinter" id="test"/> Vinter
-            <input type="checkbox" className="sortAndFilter" value="?Category=Sneakers" /> Sneakers
-            <input type="checkbox" className="sortAndFilter" value="?Category=Vanlig" /> Vanlig
+            <input type="checkbox" className="sortAndFilter" value="?Category=Training" id="test"/> TräningsVagn
+            <input type="checkbox" className="sortAndFilter" value="?Category=American" /> JänkarVagn
+            <input type="checkbox" className="sortAndFilter" value="?Category=Vanlig" /> VanligVagn
             <button onClick={this.setSortAndFilter.bind(this)}>Filtrera</button>
             <button onClick={this.clearFilter.bind(this)}>Rensa Filter</button>
         </form>

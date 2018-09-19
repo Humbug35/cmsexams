@@ -25,8 +25,6 @@ module.exports.getFilter = getFilter;
 
 function addToCart(product) {
   productsInCart.push(product);
-  product.StockQuantity--;
-  console.log(product.StockQuantity);
   localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
 };
 module.exports.addToCart = addToCart;

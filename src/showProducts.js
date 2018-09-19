@@ -13,7 +13,7 @@ class ShowProducts extends Component {
                 <article>
                   {product.Name}
                 </article>
-                <img src={imgURL} alt="Bild"/>
+                <img src={imgURL} alt="Bild" />
                 <p>Pris: {product.Price} :-</p>
                 <p className="stock">Antal i lager: {product.StockQuantity}</p>
                 <p>{product.Desc}</p>

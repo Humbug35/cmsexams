@@ -14,7 +14,7 @@ class ShowReviews extends Component {
       .then(res => res.json())
       .then(review => {
         this.setState({
-          reviews: review
+          reviews: review.reverse()
         })
       })
     }
