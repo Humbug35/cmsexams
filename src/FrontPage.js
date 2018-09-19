@@ -37,8 +37,11 @@ class FrontPage extends Component {
   }
   render() {
     const myProduct = this.state.products.map(product => {
-
-      return <ShowProducts key={product.id} product={product} />
+      if(product.StockQuantity === 0) {
+        return null
+      } else {
+        return <ShowProducts key={product.id} product={product} />
+      }
     })
     return (
       <div className="App">

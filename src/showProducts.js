@@ -15,7 +15,7 @@ class ShowProducts extends Component {
                 </article>
                 <img src={imgURL} alt="Bild"/>
                 <p>Pris: {product.Price} :-</p>
-                <p>Antal i lager: {product.StockQuantity}</p>
+                <p className="stock">Antal i lager: {product.StockQuantity}</p>
                 <p>{product.Desc}</p>
                 <p>Kategori: {product.Category}</p>
                 <AddToCartButton addToCart={addToCart.bind(this, product)}/>

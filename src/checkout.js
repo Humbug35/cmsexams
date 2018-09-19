@@ -60,19 +60,33 @@ class CheckOut extends Component {
   })
 }
   render() {
-    let cart = this.state.cartProducts.map(item => {
+    let cart = getUnique(this.state.cartProducts)
+    .map(item => {
       return <div key={item.id}>
-              <fieldset>
-                <p>{item.Name}</p>
-                <p>{item.Price} :-</p>
-              </fieldset>
-             </div>
+                  <fieldset>
+                    <p>{item.Name}</p>
+                    <img src={`http://localhost:1337${item.Image.url}`} alt="Bild" />
+                    <p>{item.Price} :-</p>
+                    <p>{item.amount} st</p>
+                  </fieldset>
+                 </div>
     })
-    // let cart = this.state.cartProducts.filter((product, id, itemsInCart) => {
-    //   return itemsInCart.indexOf(product) === id;
-    // })
+
+    function getUnique(li) {
+      let hash = {}
+      li.forEach((val) => {
+        const id = val.id;
+        if (hash[id]) {
+          hash[id].amount = hash[id].amount + 1
+        } else {
+          val.amount = 1
+          hash[id] = val;
+        }
+      })
+      return Object.values(hash)
+    }
     let price = 0;
-    let priceOne = this.state.cartProducts.map(item => {
+    this.state.cartProducts.map(item => {
       return price = item.Price + price;
     })
     return (
