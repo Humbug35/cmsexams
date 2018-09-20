@@ -2,10 +2,73 @@ img {
   width: 20%;
   height: 25vh;
 }
+body {
+  margin: 0;
+  padding: 0;
+}
 
 /* Header */
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  .header-img {
+    width: 15%;
 
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
 /* All-Products */
+.frontpage-filter-div {
+  display: flex;
+  height: 15vh;
+}
+.header-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navlink-div {
+  width: 100%
+}
+.navlink-div a {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Filter */
+
+.filter-div {
+  width: 100%;
+  height: 25vh;
+}
+.filter-form {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+.box-and-radio {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.filter-button {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 /* Single-Product */
 

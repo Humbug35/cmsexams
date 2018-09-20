@@ -52,7 +52,13 @@ class ReviewForm extends Component {
           <br />
           Recension: <br /> <textarea rows="10" cols="50" required ref="review" onChange={this.getInputValues.bind(this)}/>
           <br />
-          Betyg: <input type="number" min="1" max="5" required ref="rating" onChange={this.getInputValues.bind(this)}/>
+          Betyg: <select required ref="rating" onChange={this.getInputValues.bind(this)}>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
           <button type="submit">Skicka</button>
         </form>
       </div>

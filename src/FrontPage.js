@@ -4,6 +4,7 @@ import ShowProducts from './showProducts';
 import Filter from './Filter';
 import { getFilter } from './functions';
 import { NavLink } from 'react-router-dom';
+import Header from './Header';
 
 
 
@@ -37,19 +38,22 @@ class FrontPage extends Component {
   }
   render() {
     const myProduct = this.state.products.map(product => {
-      if(product.StockQuantity === 0) {
-        return null
-      } else {
-        return <ShowProducts key={product.id} product={product} />
-      }
+      return <ShowProducts key={product.id} product={product} />
     })
     return (
       <div className="App">
-        <NavLink to={"/checkout"}>Varukorg</NavLink>
-        <div>
+        <div className="header-div">
+          <Header />
+        </div>
+        <div className="navlink-div">
+          <NavLink to={"/checkout"}>Varukorg</NavLink>
+        </div>
+        <div className="frontpage-filter-div">
           <Filter checkBoxes={this.checkedBox.bind(this)}/>
         </div>
-        {myProduct}
+        <div>
+          {myProduct}
+        </div>
       </div>
     );
   }

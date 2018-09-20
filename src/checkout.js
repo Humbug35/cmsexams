@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { getUnique } from './functions';
 
 
 class CheckOut extends Component {
@@ -17,6 +18,12 @@ class CheckOut extends Component {
   }
   componentDidMount() {
     this.getLocal();
+  }
+  resetCart() {
+    this.setState({
+      cartProducts: []
+    })
+    localStorage.removeItem('productsInCart')
   }
   getLocal() {
       let productsInCart = JSON.parse(localStorage.getItem("productsInCart")) || [];
@@ -44,6 +51,7 @@ class CheckOut extends Component {
         ProductId: product.id,
       }
     })
+    console.log('productsOrder', productsToOrder);
     e.preventDefault();
     fetch('http://localhost:1337/order', {
       method: 'POST',
@@ -73,19 +81,7 @@ class CheckOut extends Component {
                    </div>
       })
 
-      function getUnique(li) {
-        let hash = {}
-        li.forEach((val) => {
-          const id = val.id;
-          if (hash[id]) {
-            hash[id].amount = hash[id].amount + 1
-          } else {
-            val.amount = 1
-            hash[id] = val;
-          }
-        })
-        return Object.values(hash)
-      }
+
       let price = 0;
       this.state.cartProducts.map(item => {
         return price = item.Price + price;
@@ -101,6 +97,7 @@ class CheckOut extends Component {
           </div>
           <p>{cart}</p>
           <p>TotalPris: {price} <strong>SEK</strong></p>
+          <button onClick={this.resetCart.bind(this)}>Töm Varukorg</button>
           <form onSubmit={this.sendOrder.bind(this)} ref="checkOutForm">
             Namn: <input type="text" required onChange={this.getPersonData.bind(this)} ref="client" />
             <br />

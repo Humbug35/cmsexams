@@ -28,3 +28,18 @@ function addToCart(product) {
   localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
 };
 module.exports.addToCart = addToCart;
+
+function getUnique(li) {
+  let hash = {}
+  li.forEach((val) => {
+    const id = val.id;
+    if (hash[id]) {
+      hash[id].amount = hash[id].amount + 1
+    } else {
+      val.amount = 1
+      hash[id] = val;
+    }
+  })
+  return Object.values(hash)
+}
+module.exports.getUnique = getUnique;
