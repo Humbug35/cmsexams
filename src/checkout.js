@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getUnique } from './functions';
+import Header from './Header';
 
 
 class CheckOut extends Component {
@@ -22,8 +23,8 @@ class CheckOut extends Component {
   resetCart() {
     this.setState({
       cartProducts: []
-    })
-    localStorage.removeItem('productsInCart')
+    });
+    localStorage.clear();
   }
   getLocal() {
       let productsInCart = JSON.parse(localStorage.getItem("productsInCart")) || [];
@@ -72,13 +73,15 @@ class CheckOut extends Component {
       let cart = getUnique(this.state.cartProducts)
       .map(item => {
         return <div key={item.id} className="cart-products">
-                      <img src={`http://localhost:1337${item.Image.url}`} alt="Bild" />
-                      <div className="checkout-product-name-price-amount">
-                        <p>{item.Name}</p>
-                        <p>{item.Price} :-</p>
-                        <p>{item.amount} st</p>
-                      </div>
-                   </div>
+                  <div className="checkout-header-div">
+                    <p>{item.Name}</p>
+                    <img src={`http://localhost:1337${item.Image.url}`} alt="Bild" />
+                  </div>
+                  <div className="checkout-product-name-price-amount">
+                    <p>{item.Price} :-</p>
+                    <p>{item.amount} st</p>
+                  </div>
+              </div>
       })
 
 
@@ -88,23 +91,35 @@ class CheckOut extends Component {
       })
       return (
         <div>
-          <NavLink to={"/"}>Start</NavLink>
-          <h3>CheckOut</h3>
+          <Header />
+          <div className="checkout-navlink">
+            <NavLink to={"/"}>Start</NavLink>
+          </div>
+          <h2 className="checkout-head-title">Din Varukorg</h2>
           <div className="checkout-title-product">
-            <p>Produkt</p>
-            <p>Pris</p>
-            <p>Antal</p>
+            <p className="checkout-title">Produkt</p>
+            <p className="checkout-title">Pris</p>
+            <p className="checkout-title">Antal</p>
           </div>
           <p>{cart}</p>
-          <p>TotalPris: {price} <strong>SEK</strong></p>
-          <button onClick={this.resetCart.bind(this)}>Töm Varukorg</button>
-          <form onSubmit={this.sendOrder.bind(this)} ref="checkOutForm">
-            Namn: <input type="text" required onChange={this.getPersonData.bind(this)} ref="client" />
-            <br />
-            Adress: <input type="text" required onChange={this.getPersonData.bind(this)} ref="address"/>
-            <br />
-            Mailadress: <input type="mail" required onChange={this.getPersonData.bind(this)} ref="mail"/>
-            <button type="submit">Skicka</button>
+          <p className="total-price">TotalPris: {price} <strong>SEK</strong></p>
+          <button className="reset-order-button" onClick={this.resetCart.bind(this)}>Töm Varukorg</button>
+          <form className="order-form" onSubmit={this.sendOrder.bind(this)} ref="checkOutForm">
+          <div className="order-input-div">
+            <p className="form-p">Namn: </p>
+            <input type="text" required onChange={this.getPersonData.bind(this)} ref="client" />
+          </div>
+            <div className="order-input-div">
+              <p className="form-p">Adress: </p>
+              <input type="text" required onChange={this.getPersonData.bind(this)} ref="address"/>
+            </div>
+            <div className="order-input-div">
+              <p className="form-p">Mailadress: </p>
+              <input type="mail" required onChange={this.getPersonData.bind(this)} ref="mail"/>
+            </div>
+            <div className="checkout-ordet-button">
+              <button type="submit">Skicka</button>
+            </div>
           </form>
         </div>
       )

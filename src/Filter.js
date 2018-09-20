@@ -26,10 +26,12 @@ class Filter extends Component {
       <div className="filter-div">
         <form className="filter-form">
             <div className="filter box-and-radio">
+              <strong className="sorting-header">Sortera efter:</strong>
               <span><input type="radio" className="sortAndFilter" value="?_sort=Price:asc" name="price" />Pris, Stigande</span>
               <span><input type="radio" className="sortAndFilter" value="?_sort=Price:desc" name="price" />Pris, Fallande</span>
             </div>
             <div className="filter box-and-radio">
+              <strong>Filtrera efter:</strong>
               <span><input type="checkbox" className="sortAndFilter" value="?StockQuantity_gt=0" id="test"/> Finns i lager</span>
               <span><input type="checkbox" className="sortAndFilter" value="?Category=Training" id="test"/> TräningsVagn</span>
               <span><input type="checkbox" className="sortAndFilter" value="?Category=American" /> JänkarVagn</span>

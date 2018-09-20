@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import ShowReviews from './ShowReviews';
 import AddToCartButton from './AddToCartButton';
 import { addToCart } from "./functions";
+import Header from './Header';
 
 
 class ProductPage extends Component {
@@ -35,15 +36,26 @@ class ProductPage extends Component {
     let imgUrl = `http://localhost:1337${product.Image.url}`;
     return (
       <div>
-        <NavLink to={"/"}>Start</NavLink>
-        <br />
-        <NavLink to={"/checkout"}>Till Varukorgen</NavLink>
-        <p>{product.Name}</p>
-        <img src={imgUrl} alt="Bild"/>
-        <p>{product.Desc}</p>
-        <p>Pris: {product.Price} :-</p>
-        <p>Antal i lager: {product.StockQuantity} st</p>
-        <AddToCartButton addToCart={addToCart.bind(this, product)}/>
+        <Header />
+        <div className="navlink-div single-product-nav-div">
+          <NavLink to={"/"}>Start</NavLink>
+          <NavLink to={"/checkout"}>Till Varukorgen</NavLink>
+        </div>
+          <div className="single-product-specific">
+            <div className="single-product-header">
+              <h3>{product.Name}</h3>
+              <img src={imgUrl} alt="Bild"/>
+            </div>
+            <div className="single-product-info">
+              <p>{product.Desc}</p>
+              <p>Antal i lager: {product.StockQuantity} st</p>
+              <p>Kategori: {product.Category}</p>
+            </div>
+            <div className="single-product-button">
+              <p>Pris: {product.Price} :-</p>
+              <AddToCartButton addToCart={addToCart.bind(this, product)}/>
+            </div>
+          </div>
         <div>
           <ShowReviews id={this.props.match.params.id}/>
         </div>

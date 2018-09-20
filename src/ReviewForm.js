@@ -47,19 +47,28 @@ class ReviewForm extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.postReview.bind(this)} ref="clearForm">
-          Ditt namn: <input type="text" required ref="author" onChange={this.getInputValues.bind(this)}/>
-          <br />
-          Recension: <br /> <textarea rows="10" cols="50" required ref="review" onChange={this.getInputValues.bind(this)}/>
-          <br />
-          Betyg: <select required ref="rating" onChange={this.getInputValues.bind(this)}>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-          <button type="submit">Skicka</button>
+        <form className="product-review-form-div" onSubmit={this.postReview.bind(this)} ref="clearForm">
+          <div className="review-name-div">
+            <p>Ditt namn: </p>
+            <input type="text" required ref="author" onChange={this.getInputValues.bind(this)}/>
+          </div>
+          <div className="review-text-div">
+            <p>Recension: </p>
+            <textarea rows="10" cols="50" required ref="review" onChange={this.getInputValues.bind(this)}/>
+          </div>
+          <div className="review-rating-div">
+            <p>Betyg: </p>
+            <div>
+              <select required ref="rating" onChange={this.getInputValues.bind(this)}>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <button type="submit">Skicka</button>
+          </div>
+          </div>
         </form>
       </div>
     )

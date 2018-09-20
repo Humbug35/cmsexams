@@ -25,23 +25,21 @@ class ShowReviews extends Component {
     const review = this.state.reviews.map(rev => {
       if(rev.ProductId.match(this.props.id)) {
         return (
-          <div key={rev.id}>
-            <fieldset>
+          <div key={rev.id} className="show-review-div">
               <p><strong>Skrivet av:</strong> {rev.Author}</p>
               <p><strong>Kommentar:</strong> {rev.Review}</p>
               <p><strong>Betyg:</strong> {rev.Rating}</p>
-            </fieldset>
           </div>
         )
       }
     })
     return (
       <div>
-      <div>
-        <ReviewForm id={this.props.id} updateReview={this.getReviews.bind(this)}/>
-      </div>
-        <h3>Recensioner</h3>
-        <p>{review}</p>
+        <div>
+          <ReviewForm id={this.props.id} updateReview={this.getReviews.bind(this)}/>
+        </div>
+        <h3 className="review-header">Recensioner</h3>
+        <p className="show-review">{review}</p>
       </div>
     )
   }

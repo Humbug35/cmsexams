@@ -1,4 +1,4 @@
-let productsInCart = JSON.parse(localStorage.getItem("productsInCart")) || [];
+
 
 function getFilter (urlArray) {
   let newUrl = [];
@@ -24,6 +24,7 @@ function getFilter (urlArray) {
 module.exports.getFilter = getFilter;
 
 function addToCart(product) {
+  let productsInCart = JSON.parse(localStorage.getItem("productsInCart")) || [];
   productsInCart.push(product);
   localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
 };

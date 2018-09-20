@@ -46,12 +46,12 @@ class FrontPage extends Component {
           <Header />
         </div>
         <div className="navlink-div">
-          <NavLink to={"/checkout"}>Varukorg</NavLink>
+          <NavLink to={"/checkout"}> Till Varukorgen</NavLink>
         </div>
         <div className="frontpage-filter-div">
           <Filter checkBoxes={this.checkedBox.bind(this)}/>
         </div>
-        <div>
+        <div className="frontpage-products-div">
           {myProduct}
         </div>
       </div>
